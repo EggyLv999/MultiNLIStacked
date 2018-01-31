@@ -11,8 +11,6 @@ There is one additional constraint, which is that the model must produce a sente
 
 This was joint work with Paul Michel. We made some improvements on the MultiNLI system, but they cannot be open-sourced quite yet. This is a limited copy which still implements the original state of the art system.
 
-# MultiNLIBaseline
-
 ## Getting the data
 
 There are two major NLI corpora, the [SNLI](https://nlp.stanford.edu/projects/snli/) and [MultiNLI](https://www.nyu.edu/projects/bowman/multinli/).
