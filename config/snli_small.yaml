@@ -1,0 +1,40 @@
+dynet_seed: 42
+dynet_mem: 2048
+dynet_gpu: True
+dynet_autobatch: 0
+verbose: True
+model_type: 'BILSTM'
+hidden_dim: 100
+embed_dim: 100
+classifier: 'linear'
+classifier_input_dim: 800
+classifier_hidden_dim: 600
+output_dir: 'output'
+vocab_file: 'snli_vocab_file'
+laplace_smoothing: 0.0
+min_freq: 0
+vocab_size: 100000
+model_file: 'snli_small_model'
+pretrained_wembs: 'snli_glove_100.npy'
+classifier_layer_norm: False
+train:
+  train: True
+  train_file: 'snli/train.txt'
+  dev_file: 'snli/dev.txt'
+  num_iters: 20
+  batch_size: 64
+  trainer: 'adam'
+  learning_rate: 0.001
+  gradient_clip: -1.0
+  learning_rate_decay: 0.5
+  patience: 0
+  dropout: 0.1
+  label_smoothing: 0.0
+  l2_reg: 0.0
+test:
+  test: True
+  test_file: 'snli/test.txt'
+predict:
+  predict: True
+  test_file: 'snli/test.txt'
+  predict_file: 'snli/predictions.txt'

@@ -1,0 +1,52 @@
+dynet_seed: 42
+dynet_mem: 2048
+dynet_gpu: True
+dynet_autobatch: 0
+verbose: True
+model_type: 'SIF'
+sif_a: 0.001
+hidden_dim: 300
+embed_dim: 300
+classifier: 'mlp'
+classifier_input_dim: 1200
+classifier_hidden_dim: 300
+output_dir: 'output'
+vocab_file: 'multinli_vocab_file'
+laplace_smoothing: 0.0
+min_freq: 0
+vocab_size: 1000000
+model_file: 'multinli_sif_model'
+pretrained_wembs: 'multinli_glove_300.npy'
+classifier_layer_norm: False
+train:
+  train: True
+  train_file: 'multinli/train.txt'
+  dev_file: 'multinli/dev_matched.txt'
+  num_iters: 20
+  batch_size: 64
+  trainer: 'adam'
+  learning_rate: 0.001
+  gradient_clip: -1.0
+  learning_rate_decay: 0.5
+  patience: 0
+  dropout: 0.1
+  label_smoothing: 0.0
+  l2_reg: 0.0
+test_matched:
+  test: True
+  test_file: 'multinli/dev_matched.txt'
+test_mismatched:
+  test: True
+  test_file: 'multinli/dev_mismatched.txt'
+predict_dev_matched:
+  predict: True
+  test_file: 'multinli/dev_matched.txt'
+  predict_file: 'multinli/predictions_dev_matched_sif.txt'
+predict_matched:
+  predict: True
+  test_file: 'multinli/unlabeled_matched.txt'
+  predict_file: 'multinli/predictions_matched_sif.txt'
+predict_mismatched:
+  predict: True
+  test_file: 'multinli/unlabeled_mismatched.txt'
+  predict_file: 'multinli/predictions_mismatched_sif.txt'

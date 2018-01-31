@@ -1,0 +1,53 @@
+dynet_seed: 42
+dynet_mem: 512
+dynet_gpu: True
+dynet_autobatch: 0
+verbose: True
+model_type: 'Stacked_BILSTM'
+hidden_dim: [512, 512]
+embed_dim: 300
+comparator: 'outer'
+classifier: 'linear'
+classifier_input_dim: 1050624
+output_dir: 'output'
+vocab_file: 'multinli_vocab_file'
+laplace_smoothing: 0.0
+min_freq: 0
+vocab_size: 1000000
+model_file: 'multinli_outer'
+pretrained_wembs: 'multinli_glove_300.npy'
+classifier_layer_norm: False
+multi_labels: False
+train:
+  train: True
+  train_file: 'multinli/train2.txt'
+  dev_file: 'multinli/dev_matched.txt'
+  num_iters: 20
+  batch_size: 32
+  trainer: 'adam'
+  learning_rate: 0.0002
+  gradient_clip: -1.0
+  learning_rate_decay: 0.5
+  patience: 0
+  dropout: 0.1
+  dropout_encoder: 0.0
+  label_smoothing: 0.0
+  l2_reg: 0.0
+test_matched:
+  test: True
+  test_file: 'multinli/dev_matched.txt'
+test_mismatched:
+  test: True
+  test_file: 'multinli/dev_mismatched.txt'
+predict_dev_matched:
+  predict: True
+  test_file: 'multinli/dev_matched.txt'
+  predict_file: 'multinli/predictions_dev_matched.txt'
+predict_matched:
+  predict: True
+  test_file: 'multinli/unlabeled_matched.txt'
+  predict_file: 'multinli/predictions_matched.txt'
+predict_mismatched:
+  predict: True
+  test_file: 'multinli/unlabeled_mismatched.txt'
+  predict_file: 'multinli/predictions_mismatched.txt'
